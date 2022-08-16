@@ -3,6 +3,8 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 
 numbers.filter(n => {
     return n < 10
 })
+// Does not change the original array
+// Returns true or fales, needs to be returned true to be put into new array
 
 
 const movies = [
@@ -63,3 +65,4 @@ const recentMovies = movies.filter(m => m.year > 2000)
 // const goodTitles = goodMovies.map(m => m.title)
 
 movies.filter(m => m.score > 80).map(m => m.title);
+// Filters then map

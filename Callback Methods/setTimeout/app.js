@@ -11,3 +11,4 @@ const id = setInterval(() => {
 }, 2000);
 
 // clearInterval(id);
+// Stops the interval
