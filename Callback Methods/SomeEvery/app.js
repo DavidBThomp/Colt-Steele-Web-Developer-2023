@@ -1,6 +1,8 @@
 const exams = [80, 98, 92, 78, 77, 90, 89, 84, 81, 77]
 
 exams.every(score => score >= 75)
+// Every --> all element has to be true to be true, one has to be false to be false.
+// Some --> One has to be true to be true.
 
 const movies = [
     {
