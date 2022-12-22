@@ -1,5 +1,12 @@
 // Mongooes Update: https://github.com/sidmirza4/YelpCamp-v2/blob/mongoose-fix/README.md
 
+// Node REPL: Navigate to folder
+// 'node'
+// '.load index.js
+
+// Start Mongoose: CMD as Admin
+// type 'mongod' into CMD
+
 
 const mongoose = require('mongoose');
 

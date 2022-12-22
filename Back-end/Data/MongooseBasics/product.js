@@ -1,12 +1,22 @@
+// Mongooes Update: https://github.com/sidmirza4/YelpCamp-v2/blob/mongoose-fix/README.md
+
+// Node REPL: Navigate to folder
+// 'node'
+// '.load index.js
+
+// Start Mongoose: CMD as Admin
+// type 'mongod' into CMD
+
+
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/shopApp', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log("CONNECTION OPEN!!!")
-    })
-    .catch(err => {
-        console.log("OH NO ERROR!!!!")
-        console.log(err)
-    })
+
+main().catch(err => console.log('Error Connecting to Database.', err));
+
+async function main() {
+    await mongoose.connect('mongodb://127.0.0.1:27017/shopApp')
+
+    // use `await mongoose.connect('mongodb://user:password@localhost:27017/test');` if your database has auth enabled
+  }
 
 const productSchema = new mongoose.Schema({
     name: {
