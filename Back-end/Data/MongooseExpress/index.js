@@ -16,7 +16,6 @@ const Product = require('./models/product');
 
 // Start Mongoose: CMD as Admin
 // type 'mongod' into CMD
-const mongoose = require('mongoose');
 
 main().catch(err => console.log('Error Connecting to Database.', err));
 
@@ -27,14 +26,19 @@ async function main() {
   }
 
 
+// Engine being used
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Accept responses from form POST
 app.use(express.urlencoded({ extended: true }));
+
+// Method allows PUT, PATCH, DELETE, and other Methods
 app.use(methodOverride('_method'))
 
 const categories = ['fruit', 'vegetable', 'dairy'];
 
+// index page
 app.get('/products', async (req, res) => {
     const { category } = req.query;
     if (category) {
@@ -46,34 +50,40 @@ app.get('/products', async (req, res) => {
     }
 })
 
+// New Product From
 app.get('/products/new', (req, res) => {
     res.render('products/new', { categories })
 })
 
+// New Product Form POST Method
 app.post('/products', async (req, res) => {
     const newProduct = new Product(req.body);
     await newProduct.save();
     res.redirect(`/products/${newProduct._id}`)
 })
 
+// Individual Products
 app.get('/products/:id', async (req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id)
     res.render('products/show', { product })
 })
 
+// Edit Form
 app.get('/products/:id/edit', async (req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
     res.render('products/edit', { product, categories })
 })
 
+// Edit for PUT Method
 app.put('/products/:id', async (req, res) => {
     const { id } = req.params;
     const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
     res.redirect(`/products/${product._id}`);
 })
 
+// Delete Product Method
 app.delete('/products/:id', async (req, res) => {
     const { id } = req.params;
     const deletedProduct = await Product.findByIdAndDelete(id);

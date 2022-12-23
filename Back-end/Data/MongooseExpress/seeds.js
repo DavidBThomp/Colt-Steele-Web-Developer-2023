@@ -1,14 +1,21 @@
+// We often seed our databases to get them started away form the app.
 const mongoose = require('mongoose');
 const Product = require('./models/product');
 
-mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log("MONGO CONNECTION OPEN!!!")
-    })
-    .catch(err => {
-        console.log("OH NO MONGO CONNECTION ERROR!!!!")
-        console.log(err)
-    })
+// Node REPL: Navigate to folder
+// 'node'
+// '.load index.js
+
+// Start Mongoose: CMD as Admin
+// type 'mongod' into CMD
+
+main().catch(err => console.log('Error Connecting to Database.', err));
+
+async function main() {
+    await mongoose.connect('mongodb://127.0.0.1:27017/farmStand')
+
+    // use `await mongoose.connect('mongodb://user:password@localhost:27017/test');` if your database has auth enabled
+  }
 
 // const p = new Product({
 //     name: 'Ruby Grapefruit',
