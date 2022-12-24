@@ -39,6 +39,7 @@ app.use(methodOverride('_method'))
 const categories = ['fruit', 'vegetable', 'dairy'];
 
 // index page
+// Using products?category=XXX so that it can be sorted by Category
 app.get('/products', async (req, res) => {
     const { category } = req.query;
     if (category) {
