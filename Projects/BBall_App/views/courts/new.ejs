@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Court</title>
+</head>
+<body>
+    <form action="/courts" method="POST">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" name="court[title]" id="title">
+            <label for="location">Location</label>
+            <input type="text" name="court[location]" id="location">
+            <button>Add Court</button>
+        </div>
+    </form>
+    <div>
+        <a href="/courts">All Courts</a>
+    </div>
+</body>
+</html>
