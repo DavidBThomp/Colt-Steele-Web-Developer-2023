@@ -26,11 +26,13 @@ const cleanDB = async () => {
     await court.deleteMany({});
     for(let i = 0; i < 50; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
+        const price = Math.floor(Math.random() * 20) + 10;
         const newCourt = new court ({
             title: `${cities[random1000].state}`,
             location: `${cities[random1000].city}`,
-            price: 'Free',
-            description: 'An outdoor court. Poly floor, metal backboards, and double 4 screw rim.'
+            price: price,
+            description: 'An outdoor court. Poly floor, metal backboards, and double 4 screw rim.',
+            image: 'https://api.lorem.space/image/book?w=150&h=220'
         })
         await newCourt.save();
     }

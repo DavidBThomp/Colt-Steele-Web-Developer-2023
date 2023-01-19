@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 const courtSchema = new Schema ({
     title: String,
     location: String,
-    price: String,
+    price: Number,
+    image: String,
     // floor: String,
     // backboards: String,
     description: String,

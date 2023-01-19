@@ -6,9 +6,11 @@ const mongoose = require('mongoose');
 // File Pathing
 const path = require('path');
 const methodOverride = require('method-override')
+const ejsMate = require('ejs-mate')
 
 // Get the model from courts
-const court = require('./models/courts')
+const court = require('./models/courts');
+const { application } = require('express');
 
 // Connecting to Mongoose (Mongod must be setup locally)
 // Start Mongoose: CMD as Admin
@@ -27,6 +29,7 @@ async function main() {
 // Set Engine + File for Views
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', ejsMate);
 
 // Parse Body
 app.use(express.urlencoded({

@@ -1,27 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Takes from boilerplate -->
+<% layout('/layouts/boilerplate') %>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card mb-3">
+            <img src="<%= courts.image %>" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><%= courts.title %></h5>
+                <p class="card-text"><%= courts.description %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">$<%= courts.price %></li>
+                <li class="list-group-item"><%= courts.location %></li>
+            </ul>
+            <div class="card-body">
+                <a href="/courts/<%= courts._id %>/edit" class="card-link"><button class="btn btn-warning">Edit
+                        Court</button></a>
+                <form action="/courts/<%= courts._id %>?_method=DELETE" method="POST" class="d-inline">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Court</title>
-</head>
-
-<body>
-    <h1>Single Court</h1>
-    <h2><%= courts.title %></h2>
-    <h3><%= courts.location %></h3>
-    <div></div>
-    <footer>
-        <a href="/courts">All Courts</a>
-        <a href="/courts/<%= courts._id %>/edit">Edit Court</a>
-        <p>
-            <form action="/courts/<%= courts._id %>?_method=DELETE" method="POST">
-                <button>Delete</button>
-            </form>
-        </p>
-    </footer>
-</body>
-
-</html>
+    </div>
+</div>

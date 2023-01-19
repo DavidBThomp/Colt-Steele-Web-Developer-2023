@@ -1,24 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Court</title>
-</head>
-<body>
+<!-- Takes from boilerplate -->
+<% layout('/layouts/boilerplate') %>
     <h1>Edit Court</h1>
-    <form action="/courts/<%= courts._id %>?_method=PUT" method="POST">
+
+    <div class="col-6 offset-3">
+        <form action="/courts/<%= courts._id %>?_method=PUT" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="court[title]" id="title" class="form-control" value="<%= courts.title %>">
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" name="court[location]" id="location" class="form-control" value="<%= courts.location %>">
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image URL</label>
+                <input type="text" name="court[image]" id="image" class="form-control" value="<%= courts.image %>">
+            </div>
+            <div>
+                <label for="price" class="form-label">Price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="price"
+                        placeholder="0.00" name="court[price]" value="<%= courts.price %>">
+                    <span class="input-group-text">.00</span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="court[description]" id="description" class="form-control"><%= courts.description %></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Update Court</button>
+            </div>
+        </form>
         <div>
-            <label for="title">Title</label>
-            <input type="text" name="court[title]" id="title" value="<%= courts.title %>">
-            <label for="location">Location</label>
-            <input type="text" name="court[location]" id="location" value="<%= courts.location %>">
-            <button>Update Court</button>
+            <a href="/courts/<%= courts._id %>">Back to Campground</a>
         </div>
-    </form>
-    <div>
-        <a href="/courts/<%= courts._id %>">Back to Campground</a>
     </div>
-</body>
-</html>
